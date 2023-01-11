@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <link rel="stylesheet" href="style.css">
+      <title>Age calculator</title>
+</head>
+<body>
+      <div class="container">
+                  <div class="main">
+                        <h2>Age Calculator</h2>
+                  </div>
+                  <div class="input">
+                        <p class="title">Date:</p>
+                        <input type="text" name="date" id="date" placeholder="dd" required>
+                  </div>
+                  <div class="input">
+                        <p class="title">Month:</p>
+                        <input type="text" name="month" id="month" placeholder="mm" required>
+                  </div>
+                  <div class="input">
+                        <p class="title">Year:</p>
+                        <input type="text" name="year" id="year" placeholder="yy" required>
+                  </div>
+                  <div class="main btn">
+                        <input type="button" name="submit" value="Calculate" onclick="age()">
+                  </div>
+                  <div id="result"></div>
+      </div>
+
+      <script>
+            function age(){
+
+                  let d1=document.getElementById("date").value;
+                  let m1=document.getElementById("month").value;
+                  let y1=document.getElementById("year").value;
+                  let date= new Date();
+                  let d2=date.getDate();
+                  let m2=1+date.getMonth();
+                  let y2=date.getFullYear();
+
+                  let month=[31,28,31,30,31,30,31,31,30,31,30,31];
+
+                  if(d1>d2){
+                        d2=d2+month[m2-1];
+                        m2=m2-1;
+                  }
+                  if(m1>m2){
+                        m2=m2+12;
+                        y2=y2-1;
+                  }
+                  let d=d2-d1;
+                  let m=m2-m1;
+                  let y=y2-y1;
+
+                  document.getElementById("result").innerHTML="Your age is "+y+" years "+m+" months "+d+" days";
+            }
+      </script>
+      <script src="app.js"></script>
+</body>
+</html>
